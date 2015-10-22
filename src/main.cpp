@@ -10,4 +10,8 @@ int main()
 	cout << "\n Coucou ! \t" << endl;
     Plateau plateau = Plateau();
     plateau.afficher();
+
+    cout << endl;
+    plateau(4,4).afficher();
+    cout << endl;
 }

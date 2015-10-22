@@ -40,23 +40,12 @@ Plateau::Plateau()
             }
         }
     }
-    // Placer le roi
-
-    // Placer les soldats
-
-    // Placer les moscovites
-
 }
 
 Plateau::~Plateau()
 {
     //dtor
 }
-
-/*Pion& operator() (size_t const i, size_t const j)
-{
-	return plateau[i * TAILLE + j];
-}*/
 
 Pion Plateau::getPion(size_t i, size_t j) const{
     return plateau[i * TAILLE + j];
