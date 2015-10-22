@@ -1,0 +1,7 @@
+#Ignorer fichiers generes
+/bin
+/obj
+#Ignorer les differentes merdes
+Tablut.exe
+Tablut.depend
+Tablut.layout
