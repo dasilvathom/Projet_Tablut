@@ -1,7 +1,6 @@
-#Ignorer fichiers generes
-/bin
-/obj
-#Ignorer les differentes merdes
-Tablut.exe
+# Fichiers generes
+bin/
+obj/
+# Les merdes
 Tablut.depend
 Tablut.layout
