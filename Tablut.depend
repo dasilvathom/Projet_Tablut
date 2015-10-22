@@ -5,7 +5,7 @@
 1445439588 c:\users\thomas\google drive\cours polytech et5\da\tps\tablut\include\tablut.h
 	"Plateau.h"
 
-1445448616 c:\users\thomas\google drive\cours polytech et5\da\tps\tablut\include\plateau.h
+1445528377 c:\users\thomas\google drive\cours polytech et5\da\tps\tablut\include\plateau.h
 	<stdio.h>
 	<vector>
 	"Pion.h"
@@ -21,7 +21,7 @@
 	"Pion.h"
 	<iostream>
 
-1445515453 source:c:\users\thomas\google drive\cours polytech et5\da\tps\tablut\src\plateau.cpp
+1445528173 source:c:\users\thomas\google drive\cours polytech et5\da\tps\tablut\src\plateau.cpp
 	"Plateau.h"
 	<iostream>
 

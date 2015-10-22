@@ -7,7 +7,7 @@
 
 #define TAILLE 9
 
-#define CASECENTRE ((TAILLE-1)/2)*TAILLE*((TAILLE-1)/2)
+#define CASECENTRE ((TAILLE-1)/2)
 
 #define NBROI 1
 #define NBSOLDATS 8
@@ -19,8 +19,8 @@ class Plateau
         Plateau();
         virtual ~Plateau();
         //Pion & operator() (size_t const i, size_t const j); // obtenir un pion par surchage d'operateur
-        void afficher() const;
         Pion getPion(size_t i, size_t j) const;
+        void afficher() const;
     protected:
     private:
         std::vector<Pion> plateau;
