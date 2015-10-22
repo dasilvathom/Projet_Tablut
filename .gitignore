@@ -1,0 +1,6 @@
+# Fichiers generes
+bin/
+obj/
+# Les merdes
+Tablut.depend
+Tablut.layout
