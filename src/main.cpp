@@ -13,5 +13,8 @@ int main()
 
     cout << endl;
     plateau(4,4).afficher();
+    plateau(4,4).modifPion(-1);
+    plateau(4,4).afficher();
+    plateau.afficher();
     cout << endl;
 }

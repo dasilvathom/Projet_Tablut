@@ -12,6 +12,7 @@ class Pion
         Pion(int typePion):type(typePion){};
         virtual ~Pion();
         void afficher() const;
+        void modifPion(int i) { type = i; };
     protected:
     private:
         int type;
