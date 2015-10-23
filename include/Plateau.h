@@ -14,8 +14,8 @@ class Plateau
     public:
         Plateau();
         virtual ~Plateau();
-        Pion & operator() (size_t const i, size_t const j) { return plateau[i * TAILLE + j]; }; // obtenir un pion par surchage d'operateur
-        Pion getPion(size_t i, size_t j)const;
+        Pion& operator() (size_t const i, size_t const j) { return plateau[i * TAILLE + j]; }; // obtenir un pion par surchage d'operateur
+        Pion& getPion(size_t i, size_t j);
         void afficher() const;
     protected:
     private:

@@ -18,8 +18,8 @@ int main()
     plateau.afficher();
     cout << endl;
 
-    /* Ne fonctionne pas */
-    /* << "\n Coucou ! \t" << endl;
+    /* Fonctionne */
+    cout << "\n Coucou ! \t" << endl;
     Plateau plateau2 = Plateau();
     plateau2.afficher();
 
@@ -28,23 +28,11 @@ int main()
     plateau2.getPion(4,4).modifPion(-1);
     plateau2(4,4).afficher();
     plateau2.afficher();
-    cout << endl;*/
-
-    /* Fonctionne avec plateau public */
-    /*cout << "\n Coucou ! \t" << endl;
-	Tablut tablut = Tablut();
-    tablut.plateau.afficher();
-
     cout << endl;
-    tablut.plateau(4,4).afficher();
-    tablut.plateau(4,4).modifPion(-1);
-    tablut.plateau(4,4).afficher();
-    tablut.plateau.afficher();
-    cout << endl;*/
 
-    /* Ne fonctionne pas */
+    /* Fonctionne */
     cout << "\n Coucou ! \t" << endl;
-	Tablut tablut = Tablut();
+	Tablut tablut = Tablut("j1","j2");
     tablut.getPlateau().afficher();
 
     cout << endl;
@@ -53,17 +41,4 @@ int main()
     tablut.getPlateau()(4,4).afficher();
     tablut.getPlateau().afficher();
     cout << endl;
-
-    /* Fonctionne */
-    /*cout << "\n Coucou ! \t" << endl;
-	Tablut tablut = Tablut();
-    tablut.getPlateau().afficher();
-
-    cout << endl;
-    Plateau test = tablut.getPlateau();
-    test(4,4).afficher();
-    test(4,4).modifPion(-1);
-    test(4,4).afficher();
-    tablut.getPlateau().afficher();
-    cout << endl;*/
 }

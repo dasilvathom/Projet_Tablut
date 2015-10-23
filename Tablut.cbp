@@ -33,9 +33,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/Joueur.h" />
 		<Unit filename="include/Pion.h" />
 		<Unit filename="include/Plateau.h" />
 		<Unit filename="include/Tablut.h" />
+		<Unit filename="src/Joueur.cpp" />
 		<Unit filename="src/Pion.cpp" />
 		<Unit filename="src/Plateau.cpp" />
 		<Unit filename="src/Tablut.cpp" />

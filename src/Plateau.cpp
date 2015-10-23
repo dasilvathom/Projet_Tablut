@@ -47,8 +47,9 @@ Plateau::~Plateau()
     //dtor
 }
 
-Pion Plateau::getPion(size_t i, size_t j)const{
-    return plateau[i * TAILLE + j];
+Pion& Plateau::getPion(size_t i, size_t j){
+    Pion& retPion = plateau[i * TAILLE + j];
+    return retPion;
 }
 
 void Plateau::afficher() const{
@@ -57,7 +58,8 @@ void Plateau::afficher() const{
     for(i=0;i<TAILLE;i++){
         cout<< "\t";
         for(j=0;j<TAILLE;j++){
-            this->getPion(i,j).afficher();
+            //this->getPion(i,j).afficher();
+            plateau[i * TAILLE + j].afficher();
             cout<< " ";
         }
         cout<<endl;

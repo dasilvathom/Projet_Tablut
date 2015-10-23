@@ -1,8 +1,10 @@
 #include "Tablut.h"
 
-Tablut::Tablut()
+Tablut::Tablut(string unNom1, string unNom2)
 {
     plateau = Plateau();
+    j1 = Joueur(unNom1);
+    j2 = Joueur(unNom2);
 }
 
 Tablut::~Tablut()
@@ -10,6 +12,7 @@ Tablut::~Tablut()
     //dtor
 }
 
-Plateau Tablut::getPlateau(){
-    return this->plateau;
+Plateau& Tablut::getPlateau(){
+    Plateau& retPlateau = plateau;
+    return retPlateau;
 }

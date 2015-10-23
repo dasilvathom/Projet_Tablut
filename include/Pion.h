@@ -13,6 +13,7 @@ class Pion
         virtual ~Pion();
         void afficher() const;
         void modifPion(int i) { type = i; };
+        bool estVide() { return type == VIDE; };
     protected:
     private:
         int type;
