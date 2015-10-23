@@ -8,6 +8,7 @@ class Tablut
     public:
         Tablut();
         virtual ~Tablut();
+        Plateau getPlateau();
     protected:
     private:
         Plateau plateau;

@@ -47,7 +47,7 @@ Plateau::~Plateau()
     //dtor
 }
 
-Pion Plateau::getPion(size_t i, size_t j) const{
+Pion Plateau::getPion(size_t i, size_t j)const{
     return plateau[i * TAILLE + j];
 }
 

@@ -2,10 +2,14 @@
 
 Tablut::Tablut()
 {
-    //ctor
+    plateau = Plateau();
 }
 
 Tablut::~Tablut()
 {
     //dtor
+}
+
+Plateau Tablut::getPlateau(){
+    return this->plateau;
 }
