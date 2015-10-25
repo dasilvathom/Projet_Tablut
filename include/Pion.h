@@ -14,6 +14,7 @@ class Pion
         void afficher() const;
         void modifPion(int i) { type = i; };
         bool estVide() { return type == VIDE; };
+        int getType() const { return type; };
     protected:
     private:
         int type;

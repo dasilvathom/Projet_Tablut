@@ -1,6 +1,7 @@
 #include "Plateau.h"
 
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -65,4 +66,100 @@ void Plateau::afficher() const{
         cout<<endl;
     }
     cout<<endl;
+}
+
+bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, int couleur) {
+
+    if(i1 < 0 || i1 >= TAILLE || j1 < 0 || j1 >= TAILLE) {
+        cout << "La case (" << i1 << ", " << j1 << ") est en dehors du plateau" << endl;
+        return false;
+    }
+
+    if(i2 < 0 || i2 >= TAILLE || j2 < 0 || j2 >= TAILLE) {
+        cout << "La case (" << i2 << ", " << j2 << ") est en dehors du plateau" << endl;
+        return false;
+    }
+
+    // Mouvement impossible, pas en ligne
+    if(i1 != i2 && j1 != j2) {
+        cout << "Mouvement impossible" << endl;
+        return false;
+    }
+
+    if(i1 == i2 && j1 == j2) {
+        cout << "Aucun mouvement" << endl;
+        return false;
+    }
+
+    // On récupère les pions
+    Pion& p1 = this->getPion(i1, j1);
+    Pion& p2 = this->getPion(i2, j2);
+
+    if(p1.estVide()) {
+        cout << "Aucun pion aux coordonnees (" << i1 << ", " << j1 << ")" << endl;
+        return false;
+    }
+
+    // Interdiction d'aller sur la case centrale pour les soldats / moscovites
+    if( (p1.getType() == MOSCOVITES || p1.getType() == SOLDATS) && ((i2 == CASECENTRE) && (j2 == CASECENTRE)) ) {
+        cout << "Ce Pion n'a pas le droit d'aller sur la case centrale" << endl;
+        return false;
+    }
+
+    // La case est déjà occupée
+    if(!p2.estVide()) {
+        cout << "La case (" << i2 << ", " << j2 << ") est occupee" << endl;
+        return false;
+    }
+
+    else {
+        // Verification de la couleur, mais je sais pas quel tête aura la variable couleur
+        if(true) {
+            bool possible = true;
+
+            int sensi;
+            int sensj;
+
+            if(i2 - i1 != 0) {
+                sensi = (i2 - i1) / abs(i2 - i1);
+            }
+            else {
+                sensi = 0;
+            }
+
+            if(j2 - j1 != 0) {
+                sensj = (j2 - j1) / abs(j2 - j1);
+            }
+            else {
+                sensj = 0;
+            }
+
+            int i = i1 + sensi;
+            int j = j1 + sensj;
+
+
+
+            while(possible && ((i == i2 && j != j2) || (i != i2 && j == j2))) {
+                if(!(this->getPion(i, j).estVide())) {
+                    possible = false;
+                }
+                i += sensi;
+                j += sensj;
+            }
+
+            if(possible) {
+                p2.modifPion(p1.getType());
+                p1.modifPion(VIDE);
+
+                /* Fonction de verification si Roi dans un bord, ou si pion capture */
+
+                return true;
+            }
+            else {
+                cout << "Mouvement impossible, une piece est sur le chemin" << endl;
+                return false;
+            }
+        }
+    }
+
 }

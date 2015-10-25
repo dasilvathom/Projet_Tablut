@@ -7,38 +7,15 @@ using namespace std;
 int main()
 {
     /* Fonctionne */
-	cout << "\n Coucou ! \t" << endl;
     Plateau plateau = Plateau();
     plateau.afficher();
-
     cout << endl;
-    plateau(4,4).afficher();
-    plateau(4,4).modifPion(-1);
-    plateau(4,4).afficher();
+    plateau.movePion(2, 4, 2, 6, 2);
     plateau.afficher();
-    cout << endl;
-
-    /* Fonctionne */
-    cout << "\n Coucou ! \t" << endl;
-    Plateau plateau2 = Plateau();
-    plateau2.afficher();
-
-    cout << endl;
-    plateau2(4,4).afficher();
-    plateau2.getPion(4,4).modifPion(-1);
-    plateau2(4,4).afficher();
-    plateau2.afficher();
-    cout << endl;
-
-    /* Fonctionne */
-    cout << "\n Coucou ! \t" << endl;
-	Tablut tablut = Tablut("j1","j2");
-    tablut.getPlateau().afficher();
-
-    cout << endl;
-    tablut.getPlateau()(4,4).afficher();
-    tablut.getPlateau()(4,4).modifPion(-1);
-    tablut.getPlateau()(4,4).afficher();
-    tablut.getPlateau().afficher();
+    plateau.movePion(4, 6, 3, 6, 2);
+    plateau.afficher();
+    plateau.movePion(3, 6, 9, 6, 2);
+    plateau.afficher();
+    plateau.movePion(6, 6, 5, 6, 2);
     cout << endl;
 }
