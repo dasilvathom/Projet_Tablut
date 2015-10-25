@@ -68,6 +68,14 @@ void Plateau::afficher() const{
     cout<<endl;
 }
 
+/*
+ *  Fonction permettant de bouger le pion (i1, j1) vers la case (i2, j2), joué par le joueur
+ *  ayant la couleur couleur.
+ *
+ *  Renvois true si le move a bien pu être effectué, false sinon
+ *
+ */
+
 bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, int couleur) {
 
     if(i1 < 0 || i1 >= TAILLE || j1 < 0 || j1 >= TAILLE) {
@@ -137,8 +145,6 @@ bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, i
             int i = i1 + sensi;
             int j = j1 + sensj;
 
-
-
             while(possible && ((i == i2 && j != j2) || (i != i2 && j == j2))) {
                 if(!(this->getPion(i, j).estVide())) {
                     possible = false;
@@ -151,7 +157,7 @@ bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, i
                 p2.modifPion(p1.getType());
                 p1.modifPion(VIDE);
 
-                /* Fonction de verification si Roi dans un bord, ou si pion capture */
+                /* Fonction de verifications a rajouter si Roi dans un bord, ou si pion capture */
 
                 return true;
             }
