@@ -6,10 +6,14 @@ TOTO LIST
 	- tester si un pion est capturé -> DONE BITCH
 	- tester si le joueur peut effectivement move le pion (if(true) actuellement) -> DONE BITCH
 
-* Tester les fonctions de thomas
+* Tester les fonctions de thomas (Le mec il sous traite quoi)
 
 * Implémenter une vrai partie, avec les joueurs qui s'alternent le tour de jeu
+	- Version beta, aucune verification sur ce qui est entre par l'user
 
 * Faire le rapport expliquant les choix techniques
 	- Pourquoi vector plutôt que tableau 2D? 
-	-
+	- Histoire du roi qu'il faut gérer, car on peut en avoir plusieurs
+	- On gere le plateau dynamiquement, rien empeche d'avoir un plateau plus grand,
+		par contre il faut que TAILLE soit impaire pour avoir un centre. Et pour 
+		les pieces c'est toujours le meme nombre et la meme place

@@ -10,6 +10,10 @@ class Tablut
         Tablut(string unNom1, string unNom2);
         virtual ~Tablut();
         Plateau& getPlateau();
+        Joueur const & getJoueur1() const { return j1; };
+        Joueur const & getJoueur2() const { return j2; };
+        Plateau const & getPlateau() const { return plateau; };
+        void jouer();
     protected:
     private:
         Plateau plateau;

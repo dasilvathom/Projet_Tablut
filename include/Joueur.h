@@ -12,7 +12,10 @@ class Joueur
 {
     public:
         Joueur();
-        Joueur(string unNom):nom(unNom){};
+        Joueur(string unNom, int uneCouleur):nom(unNom), couleur(uneCouleur) {};
+        void jouer(int & i1, int & j1, int & i2, int & j2) const;
+        string const getNom() const { return nom; };
+        int const getCouleur() const { return couleur; };
         virtual ~Joueur();
     protected:
     private:
