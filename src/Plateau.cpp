@@ -124,45 +124,24 @@ bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, i
     }
 
     else {
-        // Verification de la couleur, mais je sais pas quel tête aura la variable couleur
+        // Verification de la couleur
         bool pionVert = (p1.getType() == ROI || p1.getType() == SOLDATS) && (couleur == VERT);
         bool pionJaune = (p1.getType() == MOSCOVITES) && (couleur == JAUNE);
         if(pionVert || pionJaune) {
-            bool possible = true;
 
-            int sensi;
-            int sensj;
+            bool possible = deplacementPossible(i1,j1,i2,j2);
 
-            if(i2 - i1 != 0) {
-                sensi = (i2 - i1) / abs(i2 - i1);
-            }
-            else {
-                sensi = 0;
-            }
-
-            if(j2 - j1 != 0) {
-                sensj = (j2 - j1) / abs(j2 - j1);
-            }
-            else {
-                sensj = 0;
-            }
-
-            int i = i1 + sensi;
-            int j = j1 + sensj;
-
-            while(possible && ((i == i2 && j != j2) || (i != i2 && j == j2))) {
-                if(!(this->getPion(i, j).estVide())) {
-                    possible = false;
-                }
-                i += sensi;
-                j += sensj;
-            }
-
+            // Deplacement possible
             if(possible) {
+
                 p2.modifPion(p1.getType());
                 p1.modifPion(VIDE);
 
                 /* Fonction de verifications a rajouter si Roi dans un bord, ou si pion capture */
+                if(p2.getType() == ROI){
+                    finPartie(i2,j2); // test de fin de partie
+                    roiVoieLibre(i2,j2); // test si une ou plusieurs voie sont libre pour le roi
+                }
 
                 return true;
             }
@@ -177,4 +156,86 @@ bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, i
             }
     }
 
+}
+
+/*
+    Verifie si on mouvement n'a pas d'obstacle
+*/
+bool Plateau::deplacementPossible(int const i1, int const j1, int const i2, int const j2){
+    bool possible = true;
+
+    int sensi;
+    int sensj;
+
+    if(i2 - i1 != 0) {
+        sensi = (i2 - i1) / abs(i2 - i1);
+    }
+    else {
+        sensi = 0;
+    }
+
+    if(j2 - j1 != 0) {
+        sensj = (j2 - j1) / abs(j2 - j1);
+    }
+    else {
+        sensj = 0;
+    }
+
+    int i = i1 + sensi;
+    int j = j1 + sensj;
+
+    while(possible && ((i == i2 && j != j2) || (i != i2 && j == j2))) {
+        if(!(this->getPion(i, j).estVide())) {
+            possible = false;
+        }
+        i += sensi;
+        j += sensj;
+    }
+
+    return possible;
+}
+
+/*
+    Verifie si une partie est finie
+    si oui, l'attribut fin de plateau passe à vrai
+*/
+void Plateau::finPartie(size_t iRoi, size_t jRoi){
+    if((iRoi == 0) || (iRoi == (TAILLE-1)) || (jRoi == 0) || (jRoi == (TAILLE-1))){
+        fin = true;
+    }
+}
+
+/*
+    Verifie si le roi à la voie libre et affiche un message si necessaire
+*/
+void Plateau::roiVoieLibre(size_t iRoi, size_t jRoi){
+
+    int nbLibre = 0;
+
+    // Le roi n'est pas deja au bord
+    if(!fin){
+        // Vers le haut
+        if(deplacementPossible(iRoi,jRoi,0,jRoi)){
+            nbLibre++;
+        }
+        // Vers le bas
+        if(deplacementPossible(iRoi,jRoi,(TAILLE-1),jRoi)){
+            nbLibre++;
+        }
+        // Vers la droite
+        if(deplacementPossible(iRoi,jRoi,iRoi,(TAILLE-1))){
+            nbLibre++;
+        }
+        // Vers la gauche
+        if(deplacementPossible(iRoi,jRoi,iRoi,0)){
+            nbLibre++;
+        }
+
+        if(nbLibre == 1){
+            cout << "\t Raichi" << endl;
+        }
+        else if(nbLibre > 1){
+            cout << "\t Tuichi" << endl;
+        }
+    }
 }
