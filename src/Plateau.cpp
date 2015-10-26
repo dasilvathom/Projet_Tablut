@@ -137,10 +137,24 @@ bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, i
                 p2.modifPion(p1.getType());
                 p1.modifPion(VIDE);
 
-                /* Fonction de verifications a rajouter si Roi dans un bord, ou si pion capture */
+                /* Fonctions de verifications pour le roi (bord ou voie libre) */
                 if(p2.getType() == ROI){
                     finPartie(i2,j2); // test de fin de partie
                     roiVoieLibre(i2,j2); // test si une ou plusieurs voie sont libre pour le roi
+                }
+
+                /* Fonction de vérifications pour les captures */
+                if(estCapture(i2+1,j2)){
+                    this->getPion(i2+1,j2).modifPion(VIDE);
+                }
+                if(estCapture(i2-1,j2)){
+                    this->getPion(i2-1,j2).modifPion(VIDE);
+                }
+                if(estCapture(i2,j2+1)){
+                    this->getPion(i2,j2+1).modifPion(VIDE);
+                }
+                if(estCapture(i2,j2-1)){
+                    this->getPion(i2,j2-1).modifPion(VIDE);
                 }
 
                 return true;
@@ -196,7 +210,7 @@ bool Plateau::deplacementPossible(int const i1, int const j1, int const i2, int 
 }
 
 /*
-    Verifie si une partie est finie
+    Verifie si une partie est finie avec le roi sur un bord
     si oui, l'attribut fin de plateau passe à vrai
 */
 void Plateau::finPartie(size_t iRoi, size_t jRoi){
@@ -238,4 +252,55 @@ void Plateau::roiVoieLibre(size_t iRoi, size_t jRoi){
             cout << "\t Tuichi" << endl;
         }
     }
+}
+
+/*
+    Renvoie vrai si le pion sur la case i,j doit etre capture
+*/
+bool Plateau::estCapture(size_t i, size_t j){
+    // hors plateau
+    if(i >= TAILLE || j >= TAILLE) {
+        return false;
+    }
+    // pion vide
+    if(this->getPion(i,j).getType() == VIDE){
+        return false;
+    }
+    // pion moscovite
+    if(this->getPion(i,j).getType() == MOSCOVITES){
+        if((i!=0 && i!=(TAILLE-1)) && (this->getPion(i+1,j).getType() == SOLDATS) && (this->getPion(i-1,j).getType() == SOLDATS)){
+            return true;
+        }
+        if((j!=0 && j!=(TAILLE-1)) && (this->getPion(i,j+1).getType() == SOLDATS) && (this->getPion(i,j-1).getType() == SOLDATS)){
+            return true;
+        }
+        return false;
+    }
+    // pion soldat
+    if(this->getPion(i,j).getType() == SOLDATS){
+        if((i!=0 && i!=(TAILLE-1)) && (this->getPion(i+1,j).getType() == MOSCOVITES) && (this->getPion(i-1,j).getType() == MOSCOVITES)){
+            return true;
+        }
+        if((j!=0 && j!=(TAILLE-1)) && (this->getPion(i,j+1).getType() == MOSCOVITES) && (this->getPion(i,j-1).getType() == MOSCOVITES)){
+            return true;
+        }
+        return false;
+    }
+    // pion roi
+    if(this->getPion(i,j).getType() == ROI){
+        if((i!=0 && i!=(TAILLE-1)) && (j!=0 && j!=(TAILLE-1))){
+            bool caseHaut = ((i+1) == CASECENTRE && j == CASECENTRE) || (this->getPion(i+1,j).getType() == MOSCOVITES);
+            bool caseBas = ((i-1) == CASECENTRE && j == CASECENTRE) || (this->getPion(i-1,j).getType() == MOSCOVITES);
+            bool caseDroite = (i == CASECENTRE && (j+1) == CASECENTRE) || (this->getPion(i,j+1).getType() == MOSCOVITES);
+            bool caseGauche = (i == CASECENTRE && (j-1) == CASECENTRE) || (this->getPion(i,j-1).getType() == MOSCOVITES);
+            if(caseHaut && caseBas && caseDroite && caseGauche){
+                fin = true;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    return false;
+
 }

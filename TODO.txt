@@ -3,7 +3,7 @@ TOTO LIST
 * Ajouter trois tests dans movePion 
 	- tester si le roi touche un bord (fin de la partie) -> DONE BITCH
 			- Raichi et tuichi
-	- tester si un pion est capturé
+	- tester si un pion est capturé -> DONE BITCH
 	- tester si le joueur peut effectivement move le pion (if(true) actuellement) -> DONE BITCH
 
 * Tester les fonctions de thomas

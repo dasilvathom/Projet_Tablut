@@ -20,8 +20,8 @@ class Plateau
         void afficher() const;
         bool deplacementPossible(int const i1, int const j1, int const i2, int const j2);
         void roiVoieLibre(size_t iRoi, size_t jRoi);
-        bool estCapture() const;
         void finPartie(size_t iRoi, size_t jRoi);
+        bool estCapture(size_t i, size_t j);
     protected:
     private:
         std::vector<Pion> plateau;
