@@ -17,3 +17,24 @@ TOTO LIST
 	- On gere le plateau dynamiquement, rien empeche d'avoir un plateau plus grand,
 		par contre il faut que TAILLE soit impaire pour avoir un centre. Et pour 
 		les pieces c'est toujours le meme nombre et la meme place
+
+
+TESTS REALISES:
+
+  	   M ->   S M		M   M
+*		S	=>			OK
+		M		M
+
+
+		S		S
+*	   M ->		=>	M		OK
+		S		S
+
+
+		M		M
+*		R	=>	R		OK
+           M ->			M
+
+		M		M
+*         M ->	R M	=>    M   M		OK ?
+		M		M
