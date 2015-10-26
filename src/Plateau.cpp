@@ -78,11 +78,13 @@ void Plateau::afficher() const{
 
 bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, int couleur) {
 
+    // La case demandee est hors plateau
     if(i1 < 0 || i1 >= TAILLE || j1 < 0 || j1 >= TAILLE) {
         cout << "La case (" << i1 << ", " << j1 << ") est en dehors du plateau" << endl;
         return false;
     }
 
+    // La case cible est hors plateau
     if(i2 < 0 || i2 >= TAILLE || j2 < 0 || j2 >= TAILLE) {
         cout << "La case (" << i2 << ", " << j2 << ") est en dehors du plateau" << endl;
         return false;
@@ -103,6 +105,7 @@ bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, i
     Pion& p1 = this->getPion(i1, j1);
     Pion& p2 = this->getPion(i2, j2);
 
+    // Pas de pion à deplacer
     if(p1.estVide()) {
         cout << "Aucun pion aux coordonnees (" << i1 << ", " << j1 << ")" << endl;
         return false;
@@ -122,7 +125,9 @@ bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, i
 
     else {
         // Verification de la couleur, mais je sais pas quel tête aura la variable couleur
-        if(true) {
+        bool pionVert = (p1.getType() == ROI || p1.getType() == SOLDATS) && (couleur == VERT);
+        bool pionJaune = (p1.getType() == MOSCOVITES) && (couleur == JAUNE);
+        if(pionVert || pionJaune) {
             bool possible = true;
 
             int sensi;
@@ -166,6 +171,10 @@ bool Plateau::movePion(int const i1, int const j1, int const i2, int const j2, i
                 return false;
             }
         }
+        else {
+                cout << "Ce pion n'appartient pas a ce joueur" << endl;
+                return false;
+            }
     }
 
 }

@@ -21,7 +21,6 @@ class Plateau
     protected:
     private:
         std::vector<Pion> plateau;
-        //std::vector<bool> etatCase; // une autre version pour ne pas avoir de pion vide
 };
 
 #endif // PLATEAU_H

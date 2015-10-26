@@ -3,6 +3,9 @@
 
 #include <string>
 
+#define VERT 3
+#define JAUNE 4
+
 using namespace std;
 
 class Joueur

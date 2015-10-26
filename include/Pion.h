@@ -6,6 +6,9 @@
 #define SOLDATS 1
 #define MOSCOVITES 2
 
+#define VERT 3
+#define JAUNE 4
+
 class Pion
 {
     public:
@@ -13,7 +16,7 @@ class Pion
         virtual ~Pion();
         void afficher() const;
         void modifPion(int i) { type = i; };
-        bool estVide() { return type == VIDE; };
+        bool estVide() const { return type == VIDE; };
         int getType() const { return type; };
     protected:
     private:

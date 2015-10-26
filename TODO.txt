@@ -2,8 +2,9 @@ TOTO LIST
 
 * Ajouter trois tests dans movePion 
 	- tester si le roi touche un bord (fin de la partie)
+			- Raichi et tuichi
 	- tester si un pion est capturé
-	- tester si le joueur peut effectivement move le pion (if(true) actuellement)
+	- tester si le joueur peut effectivement move le pion (if(true) actuellement) -> DONE BITCH
 
 * Implémenter une vrai partie, avec les joueurs qui s'alternent le tour de jeu
 
