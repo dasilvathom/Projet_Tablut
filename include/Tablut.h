@@ -9,7 +9,7 @@
 class Tablut
 {
     public:
-        Tablut(string unNom1, string unNom2);
+        Tablut(string unNom1, string unNom2, bool ia1, bool ia2);
         virtual ~Tablut();
         Plateau& getPlateau();
         Joueur const & getJoueur1() const { return j1; };

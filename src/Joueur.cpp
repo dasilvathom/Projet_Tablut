@@ -56,5 +56,29 @@ void Joueur::jouer(int & i1, int & j1, int & i2, int & j2) const
     }
 
     cout << "(" << i1 << ", " << j1 << ") => (" << i2 << ", " << j2 << ")" << endl;
+}
 
+void Joueur::jouerIA(int & i1, int & j1, int & i2, int & j2) const
+{
+    // choix aleatoire du pion à deplacer
+    i1 = rand()%TAILLE;
+    j1 = rand()%TAILLE;
+
+    // choix aleatoire pour le deplacement
+    if(rand()%4 == 0){ // haut
+        j2 = j1;
+        rand()%i1;
+    }
+    else if(rand()%4 == 1){ // bas
+        j2 = j1;
+        rand()%(TAILLE-i1) + i1;
+    }
+    else if(rand()%4 == 2){ // droite
+        i2 = i1;
+        rand()%(TAILLE-j1) + j1;
+    }
+    else if(rand()%4 == 3){ // gauche
+        i2 = i1;
+        rand()%j1;
+    }
 }

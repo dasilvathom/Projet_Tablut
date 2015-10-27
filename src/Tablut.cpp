@@ -1,10 +1,10 @@
 #include "Tablut.h"
 
-Tablut::Tablut(string unNom1, string unNom2)
+Tablut::Tablut(string unNom1, string unNom2, bool ia1, bool ia2)
 {
     plateau = Plateau();
-    j1 = Joueur(unNom1, VERT);
-    j2 = Joueur(unNom2, JAUNE);
+    j1 = Joueur(unNom1, VERT, ia1);
+    j2 = Joueur(unNom2, JAUNE, ia2);
 }
 
 Tablut::~Tablut()
@@ -21,20 +21,39 @@ void Tablut::jouer() {
     plateau.afficher();
 
     while(plateau.getFin() == false) {
-        joueur1.jouer(i1, j1, i2, j2);
-        while(!plateau.movePion(i1, j1, i2, j2, joueur1.getCouleur())) {
+
+        if(!joueur1.estIa()){
             joueur1.jouer(i1, j1, i2, j2);
+            while(!plateau.movePion(i1, j1, i2, j2, joueur1.getCouleur())) {
+                joueur1.jouer(i1, j1, i2, j2);
+            }
+            plateau.afficher();
+        }
+        else{
+            joueur1.jouerIA(i1, j1, i2, j2);
+            while(!plateau.movePion(i1, j1, i2, j2, joueur1.getCouleur())) {
+                joueur1.jouerIA(i1, j1, i2, j2);
+            }
         }
 
-        plateau.afficher();
+        //plateau.afficher();
 
         if(plateau.getFin() == false){
-            joueur2.jouer(i1, j1, i2, j2);
-            while(!plateau.movePion(i1, j1, i2, j2, joueur2.getCouleur())) {
+            if(!joueur2.estIa()){
                 joueur2.jouer(i1, j1, i2, j2);
+                while(!plateau.movePion(i1, j1, i2, j2, joueur2.getCouleur())) {
+                    joueur2.jouer(i1, j1, i2, j2);
+                }
+                plateau.afficher();
+            }
+            else{
+                joueur2.jouerIA(i1, j1, i2, j2);
+                while(!plateau.movePion(i1, j1, i2, j2, joueur2.getCouleur())) {
+                    joueur2.jouerIA(i1, j1, i2, j2);
+                }
             }
 
-            plateau.afficher();
+            //plateau.afficher();
         }
     }
 }
