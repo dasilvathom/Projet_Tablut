@@ -295,6 +295,7 @@ bool Plateau::estCapture(size_t i, size_t j){
             bool caseGauche = (i == CASECENTRE && (j-1) == CASECENTRE) || (this->getPion(i,j-1).getType() == MOSCOVITES);
             if(caseHaut && caseBas && caseDroite && caseGauche){
                 fin = true;
+                roiPresent = false;
                 return true;
             }
         }

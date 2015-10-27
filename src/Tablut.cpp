@@ -20,7 +20,7 @@ void Tablut::jouer() {
 
     plateau.afficher();
 
-    while(true) {
+    while(plateau.getFin() == false) {
         joueur1.jouer(i1, j1, i2, j2);
         while(!plateau.movePion(i1, j1, i2, j2, joueur1.getCouleur())) {
             joueur1.jouer(i1, j1, i2, j2);
@@ -28,17 +28,33 @@ void Tablut::jouer() {
 
         plateau.afficher();
 
-        joueur2.jouer(i1, j1, i2, j2);
-        while(!plateau.movePion(i1, j1, i2, j2, joueur2.getCouleur())) {
+        if(plateau.getFin() == false){
             joueur2.jouer(i1, j1, i2, j2);
+            while(!plateau.movePion(i1, j1, i2, j2, joueur2.getCouleur())) {
+                joueur2.jouer(i1, j1, i2, j2);
+            }
+
+            plateau.afficher();
         }
-
-        plateau.afficher();
-
     }
 }
 
 Plateau& Tablut::getPlateau(){
     Plateau& retPlateau = plateau;
     return retPlateau;
+}
+
+void Tablut::afficherFin(){
+    cout << "Fin de la partie" << endl;
+
+    Plateau& plateau = getPlateau();
+    plateau.afficher();
+
+    cout << "Le gagnant est : ";
+    if(plateau.getRoiPresent()){
+        cout << this->getJoueur1().getNom() << endl;
+    }
+    else{
+        cout << this->getJoueur2().getNom() << endl;
+    }
 }

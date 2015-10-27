@@ -1,6 +1,8 @@
 #ifndef TABLUT_H
 #define TABLUT_H
 
+#include <iostream>
+
 #include "Plateau.h"
 #include "Joueur.h"
 
@@ -13,7 +15,8 @@ class Tablut
         Joueur const & getJoueur1() const { return j1; };
         Joueur const & getJoueur2() const { return j2; };
         Plateau const & getPlateau() const { return plateau; };
-        void jouer();
+        void jouer() ;
+        void afficherFin();
     protected:
     private:
         Plateau plateau;

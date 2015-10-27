@@ -22,10 +22,13 @@ class Plateau
         void roiVoieLibre(size_t iRoi, size_t jRoi);
         void finPartie(size_t iRoi, size_t jRoi);
         bool estCapture(size_t i, size_t j);
+        bool getFin() const { return fin; };
+        bool getRoiPresent() const { return roiPresent; };
     protected:
     private:
         std::vector<Pion> plateau;
         bool fin = false;
+        bool roiPresent = true;
 };
 
 #endif // PLATEAU_H

@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     /* Fonctionne */
-    Tablut t = Tablut("Bebere", "Jean");
-    t.jouer();
+    Tablut tablut = Tablut("Bebere", "Jean");
+    tablut.jouer();
+    tablut.afficherFin();
 }
