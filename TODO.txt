@@ -9,7 +9,7 @@ TOTO LIST
 * Tester les fonctions de thomas (Le mec il sous traite quoi)
 
 * Implémenter une vrai partie, avec les joueurs qui s'alternent le tour de jeu
-	- Version beta, aucune verification sur ce qui est entre par l'user
+	- Version beta, aucune verification sur ce qui est entre par l'user -> L'utilisateur ne peut rentrer que des entiers
 
 * Faire le rapport expliquant les choix techniques
 	- Pourquoi vector plutôt que tableau 2D? 
